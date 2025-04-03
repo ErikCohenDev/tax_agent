@@ -6,7 +6,6 @@ ollama
 
 # Linting and code quality
 flake8
-black
 isort
 mypy
 

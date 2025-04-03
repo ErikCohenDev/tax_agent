@@ -1,24 +1,5 @@
-[tool.black]
-line-length = 100
-target-version = ['py38']
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
-
 [tool.isort]
-profile = "black"
-line_length = 100
+profile = "
 
 [tool.mypy]
 python_version = "3.8"

@@ -52,7 +52,7 @@ def process_tax_code(args):
 def interactive_mode(agent):
     """Run interactive mode for tax questions."""
     print(
-        "\nWelcome to Tax Agent! Ask me any tax-related questions (type 'exit' to quit)."
+        "Welcome to Tax Agent! Ask me any tax-related questions (type 'exit' to quit)."
     )
 
     while True:
