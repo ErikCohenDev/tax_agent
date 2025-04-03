@@ -177,13 +177,18 @@ class TaxAgent:
         # If no tax terms found, use main words from the question
         if not found_terms:
             # Simple approach - just use words longer than 4 characters
-            found_terms = [
-                word
-                for word in question.split()
-                if len(word) > 4
-                and word.lower()
-                not in ["what", "where", "when", "which", "there", "their", "about"]
-            ]
+            found_terms = []
+            for word in question.split():
+                if len(word) > 4 and word.lower() not in [
+                    "what",
+                    "where",
+                    "when",
+                    "which",
+                    "there",
+                    "their",
+                    "about",
+                ]:
+                    found_terms.append(word)
 
         return found_terms
 
