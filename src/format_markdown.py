@@ -179,7 +179,7 @@ def format_markdown(
                     # Add placeholder to maintain chunk order
                     formatted_chunks.append(f"[ERROR: Failed to process chunk {i+1}]")
                 else:
-                    logger.info(f"Retrying in 5 seconds...")
+                    logger.info("Retrying in 5 seconds...")
                     time.sleep(5)
 
         # Save checkpoint periodically
@@ -200,12 +200,14 @@ def format_markdown(
         for i in range(total_chunks):
             try:
                 os.remove(f"{intermediate_dir}/formatted_{i}.md")
-            except:
-                pass
+            except Exception as e:
+                logger.error(
+                    f"Error removing intermediate file {intermediate_dir}/formatted_{i}.md: {str(e)}"
+                )
         try:
             os.remove(f"{output_file}.checkpoint")
-        except:
-            pass
+        except Exception as e:
+            logger.error(f"Error removing checkpoint file {output_file}.checkpoint: {str(e)}")
 
     total_duration = time.time() - start_time
     logger.info(f"Processing complete! Total time: {total_duration/60:.1f} minutes")

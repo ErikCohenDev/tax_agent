@@ -1,13 +1,11 @@
 """
-XML to Markdown converter - processes structured XML tax documents into Markdown format.
-Handles sections, subsections, paragraphs, tables, and other tax code elements.
+Main application for Tax Agent - processes tax queries and provides information.
+Handles document processing pipeline and interactive query mode.
 """
 
 import re
-import sys
-
-from bs4 import BeautifulSoup
 from lxml import etree
+from bs4 import BeautifulSoup
 
 
 def convert_xml_to_markdown(xml_file, markdown_file):
@@ -59,7 +57,6 @@ def convert_xml_to_markdown(xml_file, markdown_file):
         print(f"Error writing Markdown file: {e}")
 
 
-# Include all the helper functions from main.py
 def should_process_children(element):
     """Determine if we should process children of this element separately"""
     tag = get_tag_name(element)
@@ -395,10 +392,6 @@ def convert_list(list_element):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 2:
-        xml_file = sys.argv[1]
-        markdown_file = sys.argv[2]
-    else:
-        xml_file = "data/usc26.xml"
-        markdown_file = "data/usc26.md"
+    xml_file = "data/usc26.xml"
+    markdown_file = "data/usc26.md"
     convert_xml_to_markdown(xml_file, markdown_file)
