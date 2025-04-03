@@ -2,9 +2,8 @@
 Tests for the Tax Agent implementation.
 """
 
-import os
-import pytest
 from unittest.mock import patch, Mock
+import pytest
 
 from src.agent import TaxAgent
 
@@ -84,7 +83,10 @@ def test_query(mock_ollama, tax_agent):
     # Mock the LLM response
     mock_response = {
         "message": {
-            "content": "The standard deduction depends on your filing status.\n\nSource: 26 USC §63(c) [Standard Deduction]"
+            "content": """
+The standard deduction depends on your filing status.
+
+Source: 26 USC §63(c) [Standard Deduction]"""
         }
     }
     mock_ollama.return_value = mock_response

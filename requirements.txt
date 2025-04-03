@@ -13,3 +13,6 @@ mypy
 # Testing
 pytest
 pytest-cov
+
+# Packaging
+setuptools

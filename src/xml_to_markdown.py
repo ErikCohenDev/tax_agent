@@ -1,7 +1,13 @@
-from lxml import etree
-from bs4 import BeautifulSoup
+"""
+XML to Markdown converter - processes structured XML tax documents into Markdown format.
+Handles sections, subsections, paragraphs, tables, and other tax code elements.
+"""
+
 import re
-import html
+import sys
+
+from bs4 import BeautifulSoup
+from lxml import etree
 
 
 def convert_xml_to_markdown(xml_file, markdown_file):

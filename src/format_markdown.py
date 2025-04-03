@@ -1,10 +1,16 @@
-import ollama
-import os
-import logging
-import time
+"""
+Module for formatting markdown documents using LLMs.
+Handles chunking, processing, and reassembly of large files.
+"""
+
 import argparse
-from datetime import datetime
+import logging
+import os
 import sys
+import time
+from datetime import datetime
+
+import ollama
 
 
 def setup_logging(log_dir="logs"):
@@ -100,9 +106,7 @@ def format_markdown(
     total_chunks = len(chunks)
     for i in range(start_chunk, total_chunks):
         chunk_start_time = time.time()
-        logger.info(
-            f"Processing chunk {i+1}/{total_chunks} ({(i+1)/total_chunks*100:.1f}%)"
-        )
+        logger.info(f"Processing chunk {i+1}/{total_chunks} ({(i+1)/total_chunks*100:.1f}%)")
 
         current_chunk = chunks[i]
         previous_chunk = chunks[i - 1] if i > 0 else ""
@@ -136,9 +140,7 @@ def format_markdown(
         max_retries = 3
         for attempt in range(max_retries):
             try:
-                logger.debug(
-                    f"Sending chunk {i+1} to LLM (size: {len(current_chunk)} chars)"
-                )
+                logger.debug(f"Sending chunk {i+1} to LLM (size: {len(current_chunk)} chars)")
                 response = ollama.chat(
                     model=model,
                     messages=[{"role": "user", "content": prompt}],
@@ -226,9 +228,7 @@ def parse_args():
     parser.add_argument(
         "--clean", action="store_true", help="Clean intermediate files after processing"
     )
-    parser.add_argument(
-        "--resume", action="store_true", help="Resume from last processed chunk"
-    )
+    parser.add_argument("--resume", action="store_true", help="Resume from last processed chunk")
     return parser.parse_args()
 
 

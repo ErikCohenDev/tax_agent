@@ -1,11 +1,12 @@
 """
 Tax Agent implementation - handles tax-related queries and information retrieval.
+Uses the US Tax Code to provide accurate answers with citations.
 """
 
-import os
 import logging
+import os
 import re
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List
 
 import ollama
 

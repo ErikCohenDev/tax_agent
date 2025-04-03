@@ -1,16 +1,17 @@
 """
 Main application for Tax Agent - processes tax queries and provides information.
+Handles document processing pipeline and interactive query mode.
 """
 
-import os
 import argparse
 import logging
+import os
 import sys
 
 # Import agent and document processing modules
-from agent import TaxAgent
-from xml_to_markdown import convert_xml_to_markdown
-from format_markdown import format_markdown, setup_logging
+from src.agent import TaxAgent
+from src.xml_to_markdown import convert_xml_to_markdown
+from src.format_markdown import format_markdown, setup_logging
 
 
 def setup_directories():
