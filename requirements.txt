@@ -1,0 +1,15 @@
+# Document processing
+lxml
+beautifulsoup4
+bs4
+ollama
+
+# Linting and code quality
+flake8
+black
+isort
+mypy
+
+# Testing
+pytest
+pytest-cov
